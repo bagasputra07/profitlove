@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Do You Love Me? ❤️ | Untuk Kamu yang Spesial</title>
+  <meta name="description"
+    content="Website interaktif romantis 'Do You Love Me?' viral TikTok dilengkapi surat cinta aesthetic, tombol lari pintar, kupon bucin, dan musik romantis!">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating Ambient Particles Background -->
+  <div class="ambient-background">
+    <div class="glowing-orb orb-1"></div>
+    <div class="glowing-orb orb-2"></div>
+    <div class="glowing-orb orb-3"></div>
+    <div id="heart-particles" class="heart-particles"></div>
+  </div>
+
+  <!-- Top Floating Controls -->
+  <div class="top-controls">
+    <button id="music-btn" class="icon-btn" title="Musik Romantis (BGM)" aria-label="Toggle Romantic Music">
+      <span class="icon" id="music-icon">🎵</span>
+      <span class="btn-tooltip">Musik Romantis</span>
+    </button>
+    <button id="sound-btn" class="icon-btn" title="Toggle Sound (Suara)" aria-label="Toggle Sound">
+      <span class="icon" id="sound-icon">🔊</span>
+      <span class="btn-tooltip">Sound ON</span>
+    </button>
+    <button id="customize-btn" class="icon-btn" title="Kustomisasi Nama & Pesan" aria-label="Settings">
+      <span class="icon">⚙️</span>
+      <span class="btn-tooltip">Edit Nama</span>
+    </button>
+  </div>
+
+  <!-- Main Card Container -->
+  <main class="main-wrapper">
+
+    <!-- Navigation Pills (Gaya Index / Navigasi Cepat Bucin) -->
+    <nav class="nav-pill-group" aria-label="Bucin Sections">
+      <button class="nav-pill active" id="nav-letter" data-target="letter-stage">
+        <span class="nav-pill-icon">💌</span> Surat Cinta
+      </button>
+      <button class="nav-pill" id="nav-question" data-target="question-stage">
+        <span class="nav-pill-icon">💖</span> Tanya Doi
+      </button>
+      <button class="nav-pill" id="nav-coupons" data-target="coupons-stage">
+        <span class="nav-pill-icon">🎟️</span> Kupon Bucin
+      </button>
+      <button class="nav-pill" id="nav-reasons" data-target="reasons-stage">
+        <span class="nav-pill-icon">🌸</span> Alasan Sayang
+      </button>
+    </nav>
+
+    <div class="card-glass" id="card">
+
+      <!-- ===================================================================
+           STAGE 0: GAYA INDEX (SURAT CINTA & ENVELOPE OPENING)
+           =================================================================== -->
+      <section id="letter-stage" class="stage active">
+        <!-- Cute Intro Sticker -->
+        <div class="sticker-container">
+          <div class="sparkles-container">
+            <span class="sparkle s1">✨</span>
+            <span class="sparkle s2">💌</span>
+            <span class="sparkle s3">✨</span>
+          </div>
+          <img id="letter-sticker-img" src="assets/bucin-initial.gif" alt="Cute Waving Bear"
+            class="sticker-img anim-heart-cat" loading="eager"
+            onerror="this.onerror=null; this.src='assets/bucin-hug.gif';">
+          <div class="bubble-tag" id="letter-bubble-tag">Ada surat rahasia untukmu.. 🥺👉👈</div>
+        </div>
+
+        <div class="badge-pill">💌 SPECIAL DELIVERY FOR YOU</div>
+        <h1 class="main-title">
+          Hai <span id="crush-letter-name">Kamu</span> ✨
+        </h1>
+        <p class="subtitle">Ada surat rahasia yang tersimpan di dalam amplop ini...</p>
+
+        <!-- Interactive 3D Cute Wax Sealed Envelope -->
+        <div class="envelope-wrapper" id="envelope-wrapper" title="Klik untuk membuka surat cinta!">
+          <div class="envelope" id="envelope">
+            <div class="envelope-back"></div>
+            <!-- Letter Paper that slides out from inside -->
+            <div class="letter-paper" id="letter-paper">
+              <div class="letter-stamp">❤️ LOVE</div>
+              <div class="letter-content">
+                <h3 class="letter-salutation">Untuk Kamu yang Paling Berharga,</h3>
+                <p class="letter-text" id="letter-body-text">
+                  Dari sekian juta orang di dunia, entah kenapa tatapanku selalu tertuju ke kamu. Senyuman kamu selalu
+                  punya cara tersendiri buat bikin hariku yang berat jadi terasa jauh lebih ringan.
+                </p>
+                <p class="letter-text">
+                  Aku mungkin bukan orang yang sempurna, tapi perasaanku ke kamu selalu utuh dan tulus. Terima kasih ya
+                  udah hadir dan mewarnai hariku.
+                </p>
+                <p class="letter-text highlight-text">
+                  Sebenarnya, ada satu hal penting yang udah lama pengen kutanyakan langsung ke kamu... 👇
+                </p>
+                <div class="letter-signature">
+                  Dengan tulus,<br>
+                  <span class="signature-name" id="sender-signature-name">Seseorang yang Sayang Kamu</span> 💕
+                </div>
+              </div>
+            </div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <!-- Wax Seal Button -->
+            <div class="wax-seal" id="wax-seal" role="button" aria-label="Buka Segel Surat">
+              <span class="seal-icon">💖</span>
+              <span class="seal-hint">KLIK BUKA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action Buttons under the Letter -->
+        <div class="letter-actions unopened-actions" id="letter-unopened-actions">
+          <button id="open-envelope-btn" class="btn btn-yes btn-glow pulse-btn">
+            <span class="btn-icon">💌</span>
+            <span class="btn-text">Buka Surat Cinta</span>
+          </button>
+        </div>
+
+        <div class="letter-actions opened-actions" id="letter-opened-actions" style="display: none;">
+          <button id="go-question-btn" class="btn btn-yes btn-glow">
+            <span class="btn-icon">💖</span>
+            <span class="btn-text">Buka Pertanyaan Penting</span>
+          </button>
+          <div class="secondary-actions">
+            <button id="refold-letter-btn" class="btn btn-secondary btn-sm" title="Lipat kembali surat ke dalam amplop">
+              <span class="btn-icon">✉️</span> Lipat Surat
+            </button>
+            <button id="go-coupons-btn" class="btn btn-secondary btn-sm">
+              <span class="btn-icon">🎟️</span> Lihat Kupon Bucin
+            </button>
+            <button id="go-reasons-btn" class="btn btn-secondary btn-sm">
+              <span class="btn-icon">🌸</span> Alasan Suka
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 1: THE QUESTION (DO YOU LOVE ME? - SMART DODGE ENGINE)
+           =================================================================== -->
+      <section id="question-stage" class="stage">
+        <!-- Cute GIF / Sticker Display -->
+        <div class="sticker-container">
+          <div class="sparkles-container">
+            <span class="sparkle s1">✨</span>
+            <span class="sparkle s2">💖</span>
+            <span class="sparkle s3">✨</span>
+          </div>
+          <img id="sticker-img" src="assets/bucin-hug.gif" alt="Cute Bears" class="sticker-img anim-heart-cat"
+            loading="eager" onerror="this.onerror=null; this.src='assets/bucin-kiss.gif';">
+          <div class="bubble-tag" id="bubble-tag">Ada pertanyaan penting nih.. 🥺👉👈</div>
+        </div>
+
+        <!-- Question Header -->
+        <h2 class="main-title" id="question-text">
+          Do you love me? <span class="heart-pulse">❤️</span>
+        </h2>
+        <p class="subtitle" id="subtitle-text">Jawab yang jujur yaa, gaboleh bohong! 🙈</p>
+
+        <!-- Dynamic Counter of Rejections / Dodges (5x max) -->
+        <div class="dodge-counter-badge" id="dodge-badge" style="display: none;">
+          Usaha kabur: <span id="dodge-count">0</span> / 5x 😜
+        </div>
+
+        <!-- Interactive Button Area -->
+        <div class="btn-arena" id="btn-arena">
+          <button id="yes-btn" class="btn btn-yes">
+            <span class="btn-icon">💖</span>
+            <span class="btn-text">YES!</span>
+          </button>
+
+          <button id="no-btn" class="btn btn-no">
+            <span class="btn-icon">🥺</span>
+            <span class="btn-text">No</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 2: THE CELEBRATION (SHOWN AFTER CLICKING YES)
+           =================================================================== -->
+      <section id="celebration-stage" class="stage">
+        <div class="sticker-container">
+          <div class="celebrate-rays"></div>
+          <img id="celebrate-img" src="assets/bucin-kiss-big.gif" alt="Happy Celebration Bears"
+            class="sticker-img anim-celebrate-cat" onerror="this.onerror=null; this.src='assets/bucin-kiss.gif';">
+        </div>
+
+        <div class="badge-pill">🎉 RESMI JADIAN / SAMA-SAMA CINTA 🎉</div>
+
+        <h2 class="celebration-title" id="celebrate-title">
+          i lovee 🥰❤️
+        </h2>
+        <p class="celebration-subtitle" id="celebrate-desc">
+          Hehehe makasih yaa sayang! Mulai hari ini, aku janji bakal selalu ada buat kamu, dengerin kamu, dan bikin kamu
+          senyum tiap hari! 💕✨
+        </p>
+
+        <!-- Love Meter -->
+        <div class="love-meter-box">
+          <div class="love-meter-header">
+            <span>Tingkat Kecocokan Kita</span>
+            <span class="percentage">1000000% ❤️🔥</span>
+          </div>
+          <div class="love-meter-track">
+            <div class="love-meter-fill"></div>
+          </div>
+        </div>
+
+        <!-- Action Buttons after YES -->
+        <div class="celebration-actions">
+          <a id="wa-share-btn" href="#" target="_blank" class="btn btn-whatsapp">
+            <span class="btn-icon">💬</span> Kirim Bukti ke WhatsApp
+          </a>
+          <button id="celebrate-coupons-btn" class="btn btn-yes-secondary">
+            <span class="btn-icon">🎟️</span> Ambil Kupon Bucin Spesialmu!
+          </button>
+          <button id="replay-btn" class="btn btn-secondary">
+            <span class="btn-icon">🔄</span> Main Lagi
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 3: KUPON BUCIN VIRTUAL (VIRTUAL LOVE COUPONS)
+           =================================================================== -->
+      <section id="coupons-stage" class="stage">
+        <div class="sticker-container">
+          <img src="assets/bucin-cuddle.gif" alt="Cute Cuddle Bear" class="sticker-img anim-heart-cat"
+            onerror="this.onerror=null; this.src='assets/bucin-hug.gif';">
+        </div>
+
+        <div class="badge-pill">🎟️ VIRTUAL LOVE COUPONS 🎟️</div>
+        <h2 class="main-title">Kupon Bucin Spesial ✨</h2>
+        <p class="subtitle">Kupon ini khusus buat kamu dan berlaku selamanya! Klik untuk klaim yaa:</p>
+
+        <div class="coupons-grid">
+          <!-- Coupon 1 -->
+          <div class="coupon-card" data-coupon="1">
+            <div class="coupon-badge">KUPON #01</div>
+            <div class="coupon-icon">🍨</div>
+            <h4 class="coupon-title">Ditraktir Jajan & Ice Cream</h4>
+            <p class="coupon-desc">Bebas pilih makanan/minuman favorit kamu (Boba, Es Krim, Kopi) kapan pun kamu mau.
+              Aku yang bayar!</p>
+            <button class="claim-coupon-btn">
+              <span class="claim-icon">✨</span> Klaim Kupon
+            </button>
+          </div>
+
+          <!-- Coupon 2 -->
+          <div class="coupon-card" data-coupon="2">
+            <div class="coupon-badge">KUPON #02</div>
+            <div class="coupon-icon">🤗</div>
+            <h4 class="coupon-title">Peluk & Sandaran Unlimited</h4>
+            <p class="coupon-desc">Berlaku saat kamu capek, sedih, atau butuh ketenangan. Pundak dan pelukanku selalu
+              siap 24/7 buat kamu.</p>
+            <button class="claim-coupon-btn">
+              <span class="claim-icon">✨</span> Klaim Kupon
+            </button>
+          </div>
+
+          <!-- Coupon 3 -->
+          <div class="coupon-card" data-coupon="3">
+            <div class="coupon-badge">KUPON #03</div>
+            <div class="coupon-icon">🎧</div>
+            <h4 class="coupon-title">Teman Dengar Curhat 24 Jam</h4>
+            <p class="coupon-desc">Ceritain apa aja, dari keluh kesah sampai hal random. Aku bakal dengerin tanpa
+              nge-judge sama sekali.</p>
+            <button class="claim-coupon-btn">
+              <span class="claim-icon">✨</span> Klaim Kupon
+            </button>
+          </div>
+
+          <!-- Coupon 4 -->
+          <div class="coupon-card" data-coupon="4">
+            <div class="coupon-badge">KUPON #04</div>
+            <div class="coupon-icon">🕊️</div>
+            <h4 class="coupon-title">Bebas Ngambek 1 Hari Penuh</h4>
+            <p class="coupon-desc">Kalau lagi bete atau kesel, kupon ini bikin aku langsung ngalah, minta maaf duluan,
+              dan manjain kamu!</p>
+            <button class="claim-coupon-btn">
+              <span class="claim-icon">✨</span> Klaim Kupon
+            </button>
+          </div>
+
+          <!-- Coupon 5 -->
+          <div class="coupon-card" data-coupon="5">
+            <div class="coupon-badge">KUPON #05</div>
+            <div class="coupon-icon">🎬</div>
+            <h4 class="coupon-title">Movie Date & Midnight Talk</h4>
+            <p class="coupon-desc">Nonton film kesukaanmu bareng sambil ngemil cemilan enak sampai larut malam tanpa
+              gangguan.</p>
+            <button class="claim-coupon-btn">
+              <span class="claim-icon">✨</span> Klaim Kupon
+            </button>
+          </div>
+        </div>
+
+        <div class="stage-footer-actions">
+          <button class="btn btn-yes btn-wide" id="coupon-to-question-btn">
+            <span class="btn-icon">💖</span> Jawab Pertanyaan "Do You Love Me?"
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 4: ALASAN KENAPA AKU SAYANG KAMU (REASONS CAROUSEL)
+           =================================================================== -->
+      <section id="reasons-stage" class="stage">
+        <div class="sticker-container">
+          <img src="assets/bucin-kiss.gif" alt="Cute Kissing Bear" class="sticker-img anim-heart-cat"
+            onerror="this.onerror=null; this.src='assets/bucin-hug.gif';">
+        </div>
+
+        <div class="badge-pill">🌸 MY FAVORITE THINGS ABOUT YOU 🌸</div>
+        <h2 class="main-title">Kenapa Aku Sayang Kamu? 💕</h2>
+        <p class="subtitle">Dari ribuan alasan, 5 hal ini yang selalu bikin aku jatuh hati berkali-kali:</p>
+
+        <div class="reasons-list">
+          <div class="reason-item">
+            <div class="reason-number">01</div>
+            <div class="reason-body">
+              <h4 class="reason-title">Senyuman Kamu yang Nular 😊</h4>
+              <p class="reason-desc">Tiap kali ngeliat kamu tersenyum tulus, rasa capek seharian rasanya langsung hilang
+                begitu aja.</p>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">02</div>
+            <div class="reason-body">
+              <h4 class="reason-title">Ketawamu yang Paling Gemesin 🧸</h4>
+              <p class="reason-desc">Suara tawa kamu adalah suara paling manis yang gak pernah gagal bikin hatiku ikut
+                berbunga-bunga.</p>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">03</div>
+            <div class="reason-body">
+              <h4 class="reason-title">Ketulusan & Perhatian Kecilmu 🤍</h4>
+              <p class="reason-desc">Cara kamu peduli dan selalu memperlakukan orang lain dengan hangat bikin aku makin
+                kagum sama kamu.</p>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">04</div>
+            <div class="reason-body">
+              <h4 class="reason-title">Kenyamanan Jadi Diriku Sendiri 🕊️</h4>
+              <p class="reason-desc">Cuma sama kamu, aku ngerasa aman untuk cerita apa pun tanpa takut dinilai atau
+                dihakimi.</p>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">05</div>
+            <div class="reason-body">
+              <h4 class="reason-title">Karena Kamu Adalah Kamu ✨</h4>
+              <p class="reason-desc">Gak ada yang perlu diubah. Kamu dengan segala keunikanmu adalah alasan terbesarku
+                untuk jatuh cinta.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-footer-actions">
+          <button class="btn btn-yes btn-wide" id="reasons-to-question-btn">
+            <span class="btn-icon">💖</span> Ayo Jawab Pertanyaan Pentingnya!
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Fake System32 / Prank Alert Modal (TikTok meme easter egg) -->
+  <div id="prank-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card prank-card">
+      <div class="modal-icon">⚠️</div>
+      <h3 class="modal-title">CRITICAL ERROR!</h3>
+      <p class="modal-desc" id="prank-text">
+        Tombol "No" tertekan terlalu sering!<br>
+        Menginisiasi: <code>Delete C:\Windows\System32</code> dalam 3.. 2.. 1.. 😱💥
+      </p>
+      <div class="fake-progress-bar">
+        <div class="fake-progress-fill" id="fake-progress"></div>
+      </div>
+      <p class="modal-hint">Bercandaaa wkwk! Ayo pencet YES ajaa daripada panik! 😜</p>
+      <button id="prank-yes-btn" class="btn btn-yes btn-wide">
+        Ampun! Aku pencet YES sekarang! 💖
+      </button>
+    </div>
+  </div>
+
+  <!-- Customization Modal -->
+  <div id="settings-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">⚙️ Kustomisasi Web Bucin</h3>
+        <button id="close-modal-btn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="crush-name-input">Nama Pasangan / Calon Pacar:</label>
+          <input type="text" id="crush-name-input" placeholder="Contoh: Sayang / Dinda / Ayang">
+        </div>
+        <div class="form-group">
+          <label for="question-input">Teks Pertanyaan Bucin:</label>
+          <input type="text" id="question-input" placeholder="Do you love me? ❤️">
+        </div>
+        <div class="form-group">
+          <label for="custom-letter-input">Pesan Surat Cinta (opsional):</label>
+          <textarea id="custom-letter-input" rows="3" class="form-textarea"
+            placeholder="Tulis pesan manis personalmu di sini..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="character-theme-select">Pilihan Animasi Bucin Cute (GIF):</label>
+          <select id="character-theme-select" class="form-select">
+            <option value="bears" selected>🐻 Beruang Bucin Manis (Peluk, Cium & Cuddle)</option>
+            <option value="panda">🐼 Bubu & Dudu (Panda & Beruang Viral Bucin)</option>
+            <option value="cuddle">🐱 Mochi Peach Cat (Kucing Putih Romantis)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="wa-number-input">Nomor WhatsApp Kamu (opsional):</label>
+          <input type="tel" id="wa-number-input" placeholder="628123456789 (awali dengan 62)">
+          <small class="form-hint">Saat dia klik YES, dia bisa kirim pesan langsung ke nomor ini!</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="save-settings-btn" class="btn btn-yes btn-wide">Simpan Perubahan ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio elements & Synth logic handled via script.js Web Audio API -->
+  <script src="script.js"></script>
+</body>
+
+</html>
